@@ -71,14 +71,14 @@ var Label = React.createClass({
   componentDidMount: function () {
     // url: "http://suzuki0keiichi.github.io/api.json",
     $.ajax({
-      url: "http://localhost:8080/tmp/api.json",
+      url: "http://suzuki0keiichi.github.io/react/api.json",
       dataType: 'json',
       cache: false,
       success: function (data) {
         this.setState({ text: data.text, desc: data.desc });
       }.bind(this),
       error: function (xhr, status, err) {
-        console.error("http://localhost:8080/tmp/api.json", status, err.toString());
+        console.error("http://suzuki0keiichi.github.io/react/api.json", status, err.toString());
       }.bind(this)
     });
   },
