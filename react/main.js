@@ -36,8 +36,8 @@ var FacebookMeta = React.createClass({
   }
 });
 
-var Metas = React.createClass({
-  displayName: "Metas",
+var Label = React.createClass({
+  displayName: "Label",
 
   componentDidMount: function () {
     $.ajax({
@@ -60,40 +60,10 @@ var Metas = React.createClass({
       "span",
       null,
       React.createElement(TwitterMeta, { text: this.state.text, desc: this.state.desc }),
-      React.createElement(FacebookMeta, { text: this.state.text, desc: this.state.desc })
-    );
-  }
-});
-
-var Label = React.createClass({
-  displayName: "Label",
-
-  componentDidMount: function () {
-    // url: "http://suzuki0keiichi.github.io/api.json",
-    $.ajax({
-      url: "http://suzuki0keiichi.github.io/react/api.json",
-      dataType: 'json',
-      cache: false,
-      success: function (data) {
-        this.setState({ text: data.text, desc: data.desc });
-      }.bind(this),
-      error: function (xhr, status, err) {
-        console.error("http://suzuki0keiichi.github.io/react/api.json", status, err.toString());
-      }.bind(this)
-    });
-  },
-  getInitialState: function () {
-    return { text: "検索キーワードにヒットしにくい首領L初期値カーペンター陣十郎", desc: "失敗、、" };
-  },
-  render: function () {
-    return React.createElement(
-      "div",
-      null,
+      React.createElement(FacebookMeta, { text: this.state.text, desc: this.state.desc }),
       this.state.text
     );
   }
 });
-
-ReactDOM.render(React.createElement(Metas, null), document.getElementById('header'));
 
 ReactDOM.render(React.createElement(Label, null), document.getElementById('example'));
